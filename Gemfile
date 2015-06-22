@@ -6,6 +6,11 @@ gem 'spring', :group => :development
 gem 'sqlite3'
 gem 'jbuilder'
 gem 'responders'
+gem 'faker'
+
+group :development do
+  gem 'annotate'
+end
 
 group :development, :test do
   gem 'rspec-rails'
