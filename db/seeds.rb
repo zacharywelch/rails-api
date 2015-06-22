@@ -1,11 +1,12 @@
 artist = Artist.create(name: "OMI")
 album = Album.create(name: "Cheerleader (Felix Jaehn Remix Radio Edit)", 
-                     artist: artist)
+                     artist: artist, released_at: "May 20, 2014")
 Song.create(name: "Cheerleader", album: album)
 
 
 artist = Artist.create(name: "Walk the Moon")
-album = Album.create(name: "Talking is Hard", artist: artist)
+album = Album.create(name: "Talking is Hard", artist: artist, 
+                     released_at: "Nov 28, 2014")
 Song.create(name: "Different Colors", album: album)
 Song.create(name: "Sidekick", album: album)
 Song.create(name: "Shut up and Dance", album: album)
@@ -18,7 +19,8 @@ Song.create(name: "Spend Your $$$", album: album)
 
 
 artist = Artist.create(name: "Jason Derulo")
-album = Album.create(name: "Everything Is 4", artist: artist)
+album = Album.create(name: "Everything Is 4", artist: artist, 
+                     released_at: "May 29, 2015")
 Song.create(name: "Want to Want Me", album: album)
 Song.create(name: "Cheyanne", album: album)
 Song.create(name: "Get Ugly", album: album)
@@ -32,7 +34,8 @@ Song.create(name: "Trade Hearts", album: album)
 
 
 artist = Artist.create(name: "Tove Lo")
-album = Album.create(name: "Queen of the Clouds", artist: artist)
+album = Album.create(name: "Queen of the Clouds", artist: artist, 
+                     released_at: "Sep 30, 2014")
 Song.create(name: "The Sex", album: album)
 Song.create(name: "My Gun", album: album)
 Song.create(name: "Like Em Young", album: album)
@@ -49,7 +52,7 @@ Song.create(name: "Habits (Stay High)", album: album)
 
 
 artist = Artist.create(name: "Ellie Goulding")
-album = Album.create(name: "Lights", artist: artist)
+album = Album.create(name: "Lights", artist: artist, released_at: "Mar 8, 2011")
 Song.create(name: "Lights", album: album)
 Song.create(name: "Guns and Horses", album: album)
 Song.create(name: "Starry Eyed", album: album)
@@ -62,7 +65,8 @@ Song.create(name: "Your Biggest Mistake", album: album)
 Song.create(name: "Salt Skin", album: album)
 Song.create(name: "Your Song", album: album)
 
-album = Album.create(name: "Halcyon Days", artist: artist)
+album = Album.create(name: "Halcyon Days", artist: artist, 
+                     released_at: "Aug 27, 2013")
 Song.create(name: "Don't Say a Word", album: album)
 Song.create(name: "My Blood", album: album)
 Song.create(name: "Anything Could Happen", album: album)
@@ -78,8 +82,10 @@ Song.create(name: "I Need Your Love", album: album)
 
 
 artist = Artist.create(name: "Natalie La Rose")
-album = Album.create(name: "Somebody (feat. Jeremih) - Single", artist: artist)
+album = Album.create(name: "Somebody (feat. Jeremih) - Single", artist: artist,
+                     released_at: "Jan 6, 2015")
 Song.create(name: "Somebody (feat. Jeremih)", album: album)
 
-album = Album.create(name: "Around the World (feat. Fetty Wap) - Single", artist: artist)
+album = Album.create(name: "Around the World (feat. Fetty Wap) - Single", 
+                     artist: artist, released_at: "Jun 5, 2015")
 Song.create(name: "Around the World (feat. Fetty Wap)", album: album)
