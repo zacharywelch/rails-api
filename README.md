@@ -18,7 +18,13 @@ The following domain is used to illustrate key principles and maintain focus on 
 - Albums
 - Songs
 
-An artist has many albums. An album has many songs.
+An artist has many albums. An album has many songs. 
+
+Quick links include:
+- featured (artists)
+- recent releases (albums)
+- hot (albums, songs)
+- top (artists, albums, songs)
 
 ### Goals
 
