@@ -27,6 +27,7 @@ An artist has many albums. An album has many songs.
 - Validations
 - Tests
 - Generators
+- REST
 - JSON representation
 - Routing
 - Managing complex queries (scopes)
