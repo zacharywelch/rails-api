@@ -1,10 +1,44 @@
 require 'rails_helper'
 
-describe "Artists" do
-  describe "GET /artists" do
-    it "works! (now write some real specs)" do
-      get artists_path
-      expect(response).to have_http_status(200)
+describe "Artists API" do
+  
+  let(:json) { JSON.parse(response.body) }
+    
+  describe "GET /api/artists" do
+    
+    before do
+      10.times { FactoryGirl.create(:artist) }
+      get '/api/artists'
+    end
+
+    it "returns artists" do
+      expect(response).to be_success
+      expect(json).to be_an(Array)
+      expect(json.length).to eq 10
+    end
+  end
+
+  describe "GET /api/artists/:id" do
+    
+    subject(:artist) { FactoryGirl.create(:artist, name: "Foo") }
+    
+    before do
+      get "/api/artists/#{artist.id}"
+    end
+
+    it "returns artist by id" do
+      expect(response).to be_success
+      expect(json["id"]).to be artist.id
+    end
+
+    it "returns artist with name" do
+      expect(response).to be_success
+      expect(json["name"]).to eq "Foo"
+    end
+
+    it "returns 404 for artist that doesn't exist" do
+      get '/api/artists/missing'
+      expect(response).to be_missing
     end
   end
 end

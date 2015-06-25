@@ -10,6 +10,6 @@
 
 FactoryGirl.define do
   factory :artist do
-    name "MyString"
+    sequence(:name) { |n| "Artist #{n}" }
   end
 end
