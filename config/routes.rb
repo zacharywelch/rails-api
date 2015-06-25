@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     end
     resources :albums, except: [:new, :edit] do
       resources :songs
+      get :recent, on: :collection
     end
     resources :songs
     root to: 'artists#index'

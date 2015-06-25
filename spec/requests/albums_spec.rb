@@ -14,7 +14,7 @@ describe "Albums API" do
     it "returns albums" do
       expect(response).to be_success
       expect(json).to be_an(Array)
-      expect(json.length).to eq 10
+      expect(json.length).to be 10
     end
   end
 
@@ -98,4 +98,18 @@ describe "Albums API" do
       expect(response).to be_missing
     end
   end
+
+  describe "GET /albums/recent" do
+    
+    before do
+      5.times { FactoryGirl.create(:album, released_at: 2.months.ago) }
+      5.times { FactoryGirl.create(:album, released_at: 7.days.ago) }
+      get '/albums/recent'
+    end
+
+    it "returns albums released recently" do
+      expect(response).to be_success
+      expect(json.length).to be 5
+    end
+  end  
 end

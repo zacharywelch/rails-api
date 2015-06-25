@@ -26,6 +26,13 @@ class AlbumsController < ApplicationController
     respond_with(@album)
   end
 
+  def recent
+    @albums = Rails.cache.fetch "recent", expires_in: 1.day do
+      Album.recent_releases.to_a
+    end
+    respond_with(@albums)
+  end
+
   private
     def set_album
       @album = Album.find(params[:id])
