@@ -7,8 +7,6 @@ class ApplicationController < ActionController::API
   self.responder = ApplicationResponder
   respond_to :json
 
-  private
-
   def not_found
     render json: "Resource not found (404)", status: :not_found
   end
