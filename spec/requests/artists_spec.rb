@@ -41,4 +41,17 @@ describe "Artists API" do
       expect(response).to be_missing
     end
   end
+
+  describe "POST /api/artists" do
+    
+    before do
+      post '/api/artists', { name: "Foo" }
+    end
+
+    it "creates an artist" do
+      expect(response).to be_created
+      expect(json).to include "id"
+      expect(json["name"]).to eq "Foo"
+    end
+  end  
 end
