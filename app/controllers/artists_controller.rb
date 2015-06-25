@@ -27,9 +27,19 @@ class ArtistsController < ApplicationController
   end
 
   def featured
-    @artists = Rails.cache.fetch "featured", expires_in: 5.seconds do 
-      Artist.featured.to_a
+    @artists = Artist.featured
+    respond_with(@artists)
+  end
+
+  def ranked
+    @artists = Rails.cache.fetch "ranked", expires_in: 5.seconds do
+      Artist.ranked.to_a
     end
+    respond_with(@artists)
+  end
+
+  def hot
+    @artists = Artist.top(5)
     respond_with(@artists)
   end
 

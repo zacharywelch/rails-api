@@ -14,13 +14,13 @@ describe "Artists API" do
     it "returns artists" do
       expect(response).to be_success
       expect(json).to be_an(Array)
-      expect(json.length).to eq 10
+      expect(json.length).to be 10
     end
   end
 
   describe "GET /artists/:id" do
     
-    let(:artist) { FactoryGirl.create(:artist, name: "Foo") }
+    let(:artist) { FactoryGirl.create(:artist, name: "Foo", rank: 1) }
     
     before do
       get "/artists/#{artist.id}"
@@ -39,6 +39,11 @@ describe "Artists API" do
     it "returns artist with featured" do
       expect(response).to be_success
       expect(json["featured"]).to be false
+    end
+
+    it "returns artist with rank" do
+      expect(response).to be_success
+      expect(json["rank"]).to be 1
     end
 
     it "returns 404 for artist that doesn't exist" do
@@ -100,7 +105,7 @@ describe "Artists API" do
     it "returns artists" do
       expect(response).to be_success
       expect(json).to be_an(Array)
-      expect(json.length).to eq 10
+      expect(json.length).to be 10
     end
 
     it "returns artists that are featured" do
@@ -108,6 +113,48 @@ describe "Artists API" do
       json.each do |artist|
         expect(artist["featured"]).to be true
       end 
+    end
+  end  
+
+  describe "GET /artists/ranked" do
+    
+    before do
+      10.times { FactoryGirl.create(:artist) }
+      get '/artists/ranked'
+    end
+
+    it "returns artists by rank" do
+      expect(response).to be_success
+      expect(json).to be_an(Array)
+      expect(json.length).to be 10
+    end
+  end
+
+  describe "GET /artists/ranked" do
+    
+    before do
+      10.times { FactoryGirl.create(:artist) }
+      get '/artists/ranked'
+    end
+
+    it "returns artists by rank" do
+      expect(response).to be_success
+      expect(json).to be_an(Array)
+      expect(json.length).to be 10
+    end
+  end
+
+  describe "GET /artists/hot" do
+    
+    before do
+      10.times { FactoryGirl.create(:artist) }
+      get '/artists/hot'
+    end
+
+    it "returns top 5 artists" do
+      expect(response).to be_success
+      expect(json).to be_an(Array)
+      expect(json.length).to be 5
     end
   end  
 end

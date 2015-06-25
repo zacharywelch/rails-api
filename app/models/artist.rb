@@ -7,6 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  featured   :boolean          default("f")
+#  rank       :integer
 #
 
 class Artist < ActiveRecord::Base
@@ -16,4 +17,6 @@ class Artist < ActiveRecord::Base
   validates :name, presence: true
 
   scope :featured, -> { where(featured: true) }
+  scope :ranked, -> { order(:rank) }
+  scope :top, ->(n) { ranked.limit(n) }
 end
