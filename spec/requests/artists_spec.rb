@@ -20,7 +20,7 @@ describe "Artists API" do
 
   describe "GET /api/artists/:id" do
     
-    subject(:artist) { FactoryGirl.create(:artist, name: "Foo") }
+    let(:artist) { FactoryGirl.create(:artist, name: "Foo") }
     
     before do
       get "/api/artists/#{artist.id}"
@@ -45,13 +45,29 @@ describe "Artists API" do
   describe "POST /api/artists" do
     
     before do
-      post '/api/artists', { name: "Foo" }
+      post '/api/artists', name: "Foo"
     end
 
     it "creates an artist" do
       expect(response).to be_created
       expect(json).to include "id"
       expect(json["name"]).to eq "Foo"
+    end
+  end
+
+  describe "PUT /api/artists/:id" do
+    
+    before do
+      artist = FactoryGirl.create(:artist, name: "Foo")
+      put "/api/artists/#{artist.id}", name: "Bar"
+    end
+
+    it "updates an artist" do
+      expect(response.status).to be 204
+    end
+
+    it "returns an empty body" do
+      expect(response.body).to be_empty
     end
   end  
 end
