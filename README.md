@@ -33,7 +33,7 @@ Quick links include:
 - ~~Validations~~
 - ~~Tests~~
 - ~~Generators~~
-- REST
+- ~~REST~~
 - ~~JSON representation~~
 - Routing
 - Managing complex queries (scopes)
