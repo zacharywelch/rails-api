@@ -96,6 +96,6 @@ Artist.all.shuffle.each_with_index do |artist, i|
   artist.update_attributes(rank: i + 1)
 end
 
-# Album.all.shuffle.each_with_index do |album, i|
-#   album.update_attributes(rank: i + 1)
-# end
+Album.all.shuffle.each_with_index do |album, i|
+  album.update_attributes(rank: i + 1)
+end

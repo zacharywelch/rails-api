@@ -17,9 +17,9 @@ describe Artist do
   subject(:artist) { FactoryGirl.create(:artist, name: "Foo") }
 
   it { should respond_to(:name) }
+  it { should respond_to(:rank) }
   it { should respond_to(:albums) }
   it { should respond_to(:songs) }
-  it { should respond_to(:rank) }
 
   it { should be_valid }
   it { should_not be_featured }
