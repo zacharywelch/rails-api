@@ -6,6 +6,7 @@
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  featured   :boolean          default("f")
 #
 
 class Artist < ActiveRecord::Base
@@ -13,4 +14,6 @@ class Artist < ActiveRecord::Base
   has_many :songs, through: :albums
 
   validates :name, presence: true
+
+  scope :featured, -> { where(featured: true) }
 end

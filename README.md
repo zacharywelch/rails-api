@@ -40,5 +40,5 @@ Quick links include:
 - ~~Support for different environments~~
 - Logging
 - Authentication
-- Caching
+- ~~Caching~~
 - Pagination

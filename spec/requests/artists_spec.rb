@@ -36,6 +36,11 @@ describe "Artists API" do
       expect(json["name"]).to eq "Foo"
     end
 
+    it "returns artist with featured" do
+      expect(response).to be_success
+      expect(json["featured"]).to be false
+    end
+
     it "returns 404 for artist that doesn't exist" do
       get '/artists/missing'
       expect(response).to be_missing
@@ -45,13 +50,14 @@ describe "Artists API" do
   describe "POST /artists" do
     
     before do
-      post '/artists', name: "Foo"
+      post '/artists', name: "Foo", featured: true
     end
 
     it "creates an artist" do
       expect(response).to be_created
       expect(json).to include "id"
       expect(json["name"]).to eq "Foo"
+      expect(json["featured"]).to be true
     end
   end
 
@@ -81,6 +87,27 @@ describe "Artists API" do
       expect(response).to be_success
       get "/artists/#{artist.id}"
       expect(response).to be_missing
+    end
+  end  
+
+  describe "GET /artists/featured" do
+    
+    before do
+      10.times { FactoryGirl.create(:artist, featured: true) }
+      get '/artists/featured'
+    end
+
+    it "returns artists" do
+      expect(response).to be_success
+      expect(json).to be_an(Array)
+      expect(json.length).to eq 10
+    end
+
+    it "returns artists that are featured" do
+      expect(response).to be_success
+      json.each do |artist|
+        expect(artist["featured"]).to be true
+      end 
     end
   end  
 end

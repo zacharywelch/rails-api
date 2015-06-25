@@ -1,4 +1,4 @@
-artist = Artist.create(name: "OMI")
+artist = Artist.create(name: "OMI", featured: true)
 album = Album.create(name: "Cheerleader (Felix Jaehn Remix Radio Edit)", 
                      artist: artist, released_at: "May 20, 2014")
 Song.create(name: "Cheerleader", album: album)
@@ -81,7 +81,7 @@ Song.create(name: "Atlantis", album: album)
 Song.create(name: "I Need Your Love", album: album)
 
 
-artist = Artist.create(name: "Natalie La Rose")
+artist = Artist.create(name: "Natalie La Rose", featured: true)
 album = Album.create(name: "Somebody (feat. Jeremih) - Single", artist: artist,
                      released_at: "Jan 6, 2015")
 Song.create(name: "Somebody (feat. Jeremih)", album: album)

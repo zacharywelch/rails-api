@@ -26,12 +26,19 @@ class ArtistsController < ApplicationController
     respond_with(@artist)
   end
 
+  def featured
+    @artists = Rails.cache.fetch "featured", expires_in: 5.seconds do 
+      Artist.featured.to_a
+    end
+    respond_with(@artists)
+  end
+
   private
     def set_artist
       @artist = Artist.find(params[:id])
     end
 
     def artist_params
-      params.permit(:name)
+      params.permit(:name, :featured)
     end
 end
