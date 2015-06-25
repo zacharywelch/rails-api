@@ -34,7 +34,7 @@ Quick links include:
 - ~~Tests~~
 - ~~Generators~~
 - REST
-- JSON representation
+- ~~JSON representation~~
 - Routing
 - Managing complex queries (scopes)
 - ~~Support for different environments~~
