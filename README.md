@@ -10,7 +10,7 @@ Sample music API using Rails
 - [rspec](https://github.com/rspec/rspec-rails)
 - [factory girl](https://github.com/thoughtbot/factory_girl_rails)
 
-### Data Model
+### Domain
 
 The following domain is used to illustrate key principles and maintain focus on building APIs:
 
