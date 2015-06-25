@@ -26,4 +26,17 @@ describe Artist do
     before { artist.name = nil }
     it { should_not be_valid }
   end
+
+  describe "#featured" do
+
+    it "includes featured artists" do
+      artist = FactoryGirl.create(:artist, featured: true)
+      expect(Artist.featured).to include artist
+    end
+
+    it "excludes artists not featured" do
+      artist = FactoryGirl.create(:artist)
+      expect(Artist.featured).to_not include artist
+    end
+  end
 end

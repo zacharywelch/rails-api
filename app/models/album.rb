@@ -15,4 +15,6 @@ class Album < ActiveRecord::Base
   has_many :songs
 
   validates :name, presence: true
+
+  scope :recent_releases, -> { where("released_at > ?", 1.month.ago) }
 end

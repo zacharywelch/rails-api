@@ -30,4 +30,17 @@ describe Album do
     before { album.name = nil }
     it { should_not be_valid }
   end
+
+  describe "#recent_releases" do
+
+    it "includes albums released within a month" do
+      album = FactoryGirl.create(:album, released_at: 7.days.ago)
+      expect(Album.recent_releases).to include album
+    end
+
+    it "excludes albums released more than a month ago" do
+      album = FactoryGirl.create(:album, released_at: 2.months.ago)
+      expect(Album.recent_releases).to_not include album
+    end
+  end  
 end
