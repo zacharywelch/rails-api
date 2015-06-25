@@ -67,5 +67,20 @@ describe "Artists API" do
       expect(response.status).to be 204
       expect(response.body).to be_empty
     end
+  end
+
+  describe "DELETE /api/artists/:id" do
+    
+    let(:artist) { FactoryGirl.create(:artist) }
+    
+    before do
+      delete "/api/artists/#{artist.id}"
+    end
+
+    it "deletes an artist" do
+      expect(response).to be_success
+      get "/api/artists/#{artist.id}"
+      expect(response).to be_missing
+    end
   end  
 end
