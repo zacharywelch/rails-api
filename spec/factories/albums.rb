@@ -12,8 +12,8 @@
 
 FactoryGirl.define do
   factory :album do
-    name "MyString"
-    released_at "2015-06-21"
-    artist nil
+    sequence(:name) { |n| "Album #{n}" }
+    released_at "2008-01-27"
+    artist
   end
 end
