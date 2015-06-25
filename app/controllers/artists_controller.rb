@@ -39,7 +39,7 @@ class ArtistsController < ApplicationController
   end
 
   def hot
-    @artists = Artist.top(5)
+    @artists = Artist.hot
     respond_with(@artists)
   end
 

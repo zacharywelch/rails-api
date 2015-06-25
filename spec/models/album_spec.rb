@@ -31,7 +31,7 @@ describe Album do
     it { should_not be_valid }
   end
 
-  describe "#recent_releases" do
+  describe ".recent_releases" do
 
     it "includes albums released within a month" do
       album = FactoryGirl.create(:album, released_at: 7.days.ago)
