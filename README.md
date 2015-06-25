@@ -28,16 +28,16 @@ Quick links include:
 
 ### Goals
 
-- Conventions
-- Layered Architecture (MVC)
-- Validations
-- Tests
-- Generators
+- ~~Conventions~~
+- ~~Layered Architecture (MVC)~~
+- ~~Validations~~
+- ~~Tests~~
+- ~~Generators~~
 - REST
 - JSON representation
 - Routing
 - Managing complex queries (scopes)
-- Support for different environments
+- ~~Support for different environments~~
 - Logging
 - Authentication
 - Caching
