@@ -4,11 +4,11 @@ describe "Albums API" do
   
   let(:json) { JSON.parse(response.body) }
     
-  describe "GET /api/albums" do
+  describe "GET /albums" do
     
     before do
       10.times { FactoryGirl.create(:album) }
-      get '/api/albums'
+      get '/albums'
     end
 
     it "returns albums" do
@@ -18,7 +18,7 @@ describe "Albums API" do
     end
   end
 
-  describe "GET /api/albums/:id" do
+  describe "GET /albums/:id" do
     
     let(:album) do
       FactoryGirl.create(:album, name: "Foo", released_at: "2008-01-27", 
@@ -26,7 +26,7 @@ describe "Albums API" do
     end
     
     before do
-      get "/api/albums/#{album.id}"
+      get "/albums/#{album.id}"
     end
 
     it "returns album by id" do
@@ -45,7 +45,7 @@ describe "Albums API" do
     end
 
     it "returns 404 for album that doesn't exist" do
-      get '/api/albums/missing'
+      get '/albums/missing'
       expect(response).to be_missing
     end
 
@@ -56,10 +56,10 @@ describe "Albums API" do
     end
   end
 
-  describe "POST /api/albums" do
+  describe "POST /albums" do
     
     before do
-      post '/api/albums', name: "Foo", released_at: "2008-01-27"
+      post '/albums', name: "Foo", released_at: "2008-01-27"
     end
 
     it "creates an album" do
@@ -70,12 +70,12 @@ describe "Albums API" do
     end
   end
 
-  describe "PUT /api/albums/:id" do
+  describe "PUT /albums/:id" do
     
     let(:album) { FactoryGirl.create(:album, name: "Foo") }
 
     before do
-      put "/api/albums/#{album.id}", name: "Bar"
+      put "/albums/#{album.id}", name: "Bar"
     end
 
     it "updates an album" do
@@ -84,18 +84,18 @@ describe "Albums API" do
     end
   end
 
-  describe "DELETE /api/albums/:id" do
+  describe "DELETE /albums/:id" do
     
     let(:album) { FactoryGirl.create(:album) }
     
     before do
-      delete "/api/albums/#{album.id}"
+      delete "/albums/#{album.id}"
     end
 
     it "deletes an album" do
       expect(response).to be_success
-      get "/api/albums/#{album.id}"
+      get "/albums/#{album.id}"
       expect(response).to be_missing
     end
-  end  
+  end
 end

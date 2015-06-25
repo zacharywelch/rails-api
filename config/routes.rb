@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  scope :api, defaults: { format: :json } do
-    resources :songs, except: [:new, :edit]
-    resources :albums, except: [:new, :edit]
+  scope defaults: { format: :json } do
     resources :artists, except: [:new, :edit]
+    resources :albums, except: [:new, :edit] do
+      resources :songs
+    end
+    resources :songs
+    root to: 'artists#index'
   end
-
-  root to: 'artists#index', scope: :api, defaults: { format: :json }
 end

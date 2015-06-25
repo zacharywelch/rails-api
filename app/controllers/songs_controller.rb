@@ -1,8 +1,9 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :update, :destroy]
+  before_action :set_album
 
   def index
-    @songs = Song.all
+    @songs = songs.all
     respond_with(@songs)
   end
 
@@ -27,11 +28,19 @@ class SongsController < ApplicationController
   end
 
   private
+    def songs
+      @album ? @album.songs : Song
+    end
+
     def set_song
       @song = Song.find(params[:id])
     end
 
     def song_params
       params.permit(:name, :album_id)
+    end
+
+    def set_album
+      @album = Album.find(params[:album_id]) if params[:album_id]
     end
 end

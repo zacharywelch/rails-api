@@ -4,11 +4,11 @@ describe "Artists API" do
   
   let(:json) { JSON.parse(response.body) }
     
-  describe "GET /api/artists" do
+  describe "GET /artists" do
     
     before do
       10.times { FactoryGirl.create(:artist) }
-      get '/api/artists'
+      get '/artists'
     end
 
     it "returns artists" do
@@ -18,12 +18,12 @@ describe "Artists API" do
     end
   end
 
-  describe "GET /api/artists/:id" do
+  describe "GET /artists/:id" do
     
     let(:artist) { FactoryGirl.create(:artist, name: "Foo") }
     
     before do
-      get "/api/artists/#{artist.id}"
+      get "/artists/#{artist.id}"
     end
 
     it "returns artist by id" do
@@ -37,15 +37,15 @@ describe "Artists API" do
     end
 
     it "returns 404 for artist that doesn't exist" do
-      get '/api/artists/missing'
+      get '/artists/missing'
       expect(response).to be_missing
     end
   end
 
-  describe "POST /api/artists" do
+  describe "POST /artists" do
     
     before do
-      post '/api/artists', name: "Foo"
+      post '/artists', name: "Foo"
     end
 
     it "creates an artist" do
@@ -55,12 +55,12 @@ describe "Artists API" do
     end
   end
 
-  describe "PUT /api/artists/:id" do
+  describe "PUT /artists/:id" do
     
     let(:artist) { FactoryGirl.create(:artist, name: "Foo") }
 
     before do
-      put "/api/artists/#{artist.id}", name: "Bar"
+      put "/artists/#{artist.id}", name: "Bar"
     end
 
     it "updates an artist" do
@@ -69,17 +69,17 @@ describe "Artists API" do
     end
   end
 
-  describe "DELETE /api/artists/:id" do
+  describe "DELETE /artists/:id" do
     
     let(:artist) { FactoryGirl.create(:artist) }
     
     before do
-      delete "/api/artists/#{artist.id}"
+      delete "/artists/#{artist.id}"
     end
 
     it "deletes an artist" do
       expect(response).to be_success
-      get "/api/artists/#{artist.id}"
+      get "/artists/#{artist.id}"
       expect(response).to be_missing
     end
   end  
