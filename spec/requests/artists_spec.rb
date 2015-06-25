@@ -57,16 +57,14 @@ describe "Artists API" do
 
   describe "PUT /api/artists/:id" do
     
+    let(:artist) { FactoryGirl.create(:artist, name: "Foo") }
+
     before do
-      artist = FactoryGirl.create(:artist, name: "Foo")
       put "/api/artists/#{artist.id}", name: "Bar"
     end
 
     it "updates an artist" do
       expect(response.status).to be 204
-    end
-
-    it "returns an empty body" do
       expect(response.body).to be_empty
     end
   end  
