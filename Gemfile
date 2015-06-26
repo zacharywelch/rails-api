@@ -6,6 +6,7 @@ gem 'sqlite3'
 gem 'jbuilder'
 gem 'responders'
 gem 'faker'
+gem 'kaminari'
 
 group :development do
   gem 'spring'

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get :ranked, on: :collection
       get :hot, on: :collection
     end
-    resources :songs, only: [:show, :update, :destroy] do
+    resources :songs, except: [:new, :edit, :create] do
       get :top_25, on: :collection
       get :hot, on: :collection 
     end
