@@ -24,5 +24,5 @@ class Album < ActiveRecord::Base
 
   def hot?
     rank.between?(1, 5)
-  end  
+  end
 end

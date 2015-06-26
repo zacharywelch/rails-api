@@ -27,6 +27,8 @@ describe Song do
     it { should_not be_valid }
   end
 
+  # TODO refactor ranked to shared example
+
   describe ".ranked" do
 
     before do 

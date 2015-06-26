@@ -33,6 +33,8 @@ describe Album do
     it { should_not be_valid }
   end
 
+  # TODO refactor ranked and hot to shared examples
+  
   describe "#hot" do
     
     context "when ranked in top 5" do
