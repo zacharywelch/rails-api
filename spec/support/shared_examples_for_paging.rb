@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-shared_examples "pagination" do |path, factory|
+shared_examples "pagination" do |path, factory, attributes = {}|
 
   before do
-    FactoryGirl.create_list factory, 30
+    FactoryGirl.create_list factory, 30, attributes
     get "#{path}?page=1"
   end
 

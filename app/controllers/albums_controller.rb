@@ -27,7 +27,7 @@ class AlbumsController < ApplicationController
   end
 
   def recent
-    @albums = Album.recent_releases
+    @albums = Album.recent_releases.page(params[:page])
     respond_with(@albums)
   end
 

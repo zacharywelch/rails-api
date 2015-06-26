@@ -7,7 +7,7 @@ describe "Albums API" do
   describe "GET /albums" do
     
     before do
-      10.times { FactoryGirl.create(:album) }
+      FactoryGirl.create_list :album, 10
       get '/albums'
     end
 
@@ -107,8 +107,8 @@ describe "Albums API" do
   describe "GET /albums/recent" do
     
     before do
-      5.times { FactoryGirl.create(:album, released_at: 2.months.ago) }
-      5.times { FactoryGirl.create(:album, released_at: 7.days.ago) }
+      FactoryGirl.create_list :album, 5, released_at: 2.months.ago
+      FactoryGirl.create_list :recent_album, 5
       get '/albums/recent'
     end
 
@@ -118,10 +118,12 @@ describe "Albums API" do
     end
   end  
 
+  it_has_behavior "pagination", "/albums/recent", :recent_album 
+
   describe "GET /albums/ranked" do
     
     before do
-      10.times { FactoryGirl.create(:album) }
+      FactoryGirl.create_list :album, 10
       get '/albums/ranked'
     end
 
@@ -135,7 +137,7 @@ describe "Albums API" do
   describe "GET /albums/hot" do
     
     before do
-      10.times { FactoryGirl.create(:album) }
+      FactoryGirl.create_list :album, 10
       get '/albums/hot'
     end
 

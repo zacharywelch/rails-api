@@ -38,7 +38,7 @@ describe Album do
   describe ".recent_releases" do
 
     it "includes albums released within a month" do
-      album = FactoryGirl.create(:album, released_at: 7.days.ago)
+      album = FactoryGirl.create(:recent_album)
       expect(Album.recent_releases).to include album
     end
 

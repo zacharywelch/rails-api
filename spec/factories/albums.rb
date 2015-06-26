@@ -17,5 +17,9 @@ FactoryGirl.define do
     released_at "2008-01-27"
     sequence(:rank)
     artist
+
+    factory :recent_album do
+      released_at 1.week.ago
+    end
   end
 end
