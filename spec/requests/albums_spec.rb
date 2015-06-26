@@ -118,8 +118,6 @@ describe "Albums API" do
     end
   end  
 
-  it_has_behavior "pagination", "/albums/recent", :recent_album 
-
   describe "GET /albums/ranked" do
     
     before do
