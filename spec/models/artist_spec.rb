@@ -24,22 +24,12 @@ describe Artist do
   it { should be_valid }
   it { should_not be_featured }
 
+  it_behaves_like "ranked"
+  it_behaves_like "hot"
+
   context "when name is not present" do
     before { artist.name = nil }
     it { should_not be_valid }
-  end
-
-  describe "#hot" do
-    
-    context "when ranked in top 5" do
-      before { artist.rank = 5 }
-      it { should be_hot }
-    end
-
-    context "when ranked below 5" do
-      before { artist.rank = 6 }
-      it { should_not be_hot }
-    end
   end
 
   describe ".featured" do
@@ -52,42 +42,6 @@ describe Artist do
     it "excludes artists not featured" do
       artist = FactoryGirl.create(:artist)
       expect(Artist.featured).to_not include artist
-    end
-  end
-
-  describe ".ranked" do
-
-    before do 
-      FactoryGirl.create(:artist, rank: 2)
-      FactoryGirl.create(:artist, rank: 1)
-    end
-    
-    it "returns artists by rank" do
-      expect(Artist.ranked.first.rank).to be 1
-      expect(Artist.ranked.second.rank).to be 2
-    end
-  end  
-
-  describe ".top(n)" do
-
-    before do 
-      10.times { |i| FactoryGirl.create(:artist, rank: i + 1) }
-    end
-    
-    it "returns the top n artists" do
-      expect(Artist.top(2).first.rank).to be 1
-      expect(Artist.top(2).second.rank).to be 2
-    end
-  end
-
-  describe ".hot" do
-
-    before do 
-      10.times { |i| FactoryGirl.create(:artist, rank: i + 1) }
-    end
-    
-    it "returns the top 5 artists" do
-      expect(Artist.hot.map(&:rank)).to eq [1,2,3,4,5]
     end
   end
 end
