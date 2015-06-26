@@ -3,7 +3,7 @@ class SongsController < ApplicationController
   before_action :set_album
 
   def index
-    @songs = songs.all
+    @songs = songs.page(params[:page]).per(params[:per_page])
     respond_with(@songs)
   end
 
