@@ -97,17 +97,31 @@ describe "Songs API" do
     end
   end
 
-  describe "GET /songs/top_10" do
+  describe "GET /songs/top_25" do
     
     before do
-      20.times { FactoryGirl.create(:song) }
-      get '/songs/top_10'
+      30.times { FactoryGirl.create(:song) }
+      get '/songs/top_25'
     end
 
-    it "returns top 10 songs" do
+    it "returns top 25 songs" do
       expect(response).to be_success
       expect(json).to be_an(Array)
-      expect(json.length).to be 10
+      expect(json.length).to be 25
+    end
+  end
+
+  describe "GET /songs/hot" do
+    
+    before do
+      10.times { FactoryGirl.create(:song) }
+      get '/songs/hot'
+    end
+
+    it "returns top 5 songs" do
+      expect(response).to be_success
+      expect(json).to be_an(Array)
+      expect(json.length).to be 5
     end
   end  
 end

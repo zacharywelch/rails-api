@@ -27,7 +27,20 @@ describe Song do
     it { should_not be_valid }
   end
 
-  # TODO refactor ranked to shared example
+  # TODO refactor ranked and hot to shared examples
+  
+  describe "#hot" do
+    
+    context "when ranked in top 5" do
+      before { song.rank = 5 }
+      it { should be_hot }
+    end
+
+    context "when ranked below 5" do
+      before { song.rank = 6 }
+      it { should_not be_hot }
+    end
+  end
 
   describe ".ranked" do
 
@@ -53,4 +66,15 @@ describe Song do
       expect(Song.top(2).second.rank).to be 2
     end
   end
+
+  describe ".hot" do
+
+    before do 
+      10.times { |i| FactoryGirl.create(:song, rank: i + 1) }
+    end
+    
+    it "returns the top 5 songs" do
+      expect(Song.hot.map(&:rank)).to eq [1,2,3,4,5]
+    end
+  end 
 end

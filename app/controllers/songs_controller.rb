@@ -27,8 +27,13 @@ class SongsController < ApplicationController
     respond_with(@song)
   end
 
-  def top_10
-    @songs = Song.top(10)
+  def top_25
+    @songs = Song.top(25)
+    respond_with(@songs)
+  end
+
+  def hot
+    @songs = Song.hot
     respond_with(@songs)
   end
 
