@@ -37,7 +37,7 @@ Quick links include:
 - ~~REST~~
 - ~~JSON representation~~
 - ~~Routing~~
-- Managing complex queries (scopes)
+- ~~Managing complex queries (scopes)~~
 - ~~Support for different environments~~
 - Logging
 - Authentication
