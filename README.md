@@ -32,7 +32,7 @@ Quick links include:
 - ~~Layered Architecture (MVC)~~
 - ~~Validations~~
 - ~~Tests~~
-- Shared examples
+- ~~Shared examples~~
 - ~~Generators~~
 - ~~REST~~
 - ~~JSON representation~~
