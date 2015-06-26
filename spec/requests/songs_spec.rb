@@ -7,7 +7,7 @@ describe "Songs API" do
   describe "GET /songs" do
     
     before do
-      10.times { FactoryGirl.create(:song) }
+      FactoryGirl.create_list :song, 10
       get '/songs'
     end
 
@@ -114,7 +114,7 @@ describe "Songs API" do
   describe "GET /songs/top_25" do
     
     before do
-      30.times { FactoryGirl.create(:song) }
+      FactoryGirl.create_list :song, 30
       get '/songs/top_25'
     end
 
@@ -128,7 +128,7 @@ describe "Songs API" do
   describe "GET /songs/hot" do
     
     before do
-      10.times { FactoryGirl.create(:song) }
+      FactoryGirl.create_list :song, 10
       get '/songs/hot'
     end
 
@@ -142,14 +142,14 @@ describe "Songs API" do
   describe "paging" do
 
     before do
-      10.times { FactoryGirl.create(:song) }
-      get '/songs?page=1&per_page=5'
+      FactoryGirl.create_list :song, 30
+      get '/songs?page=1'
     end
 
     it "returns page" do
       expect(response).to be_success
       expect(json).to be_an(Array)
-      expect(json.length).to be 5
+      expect(json.length).to be 25
     end
   end
 end
