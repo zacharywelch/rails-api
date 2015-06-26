@@ -4,11 +4,14 @@ describe "Songs API" do
   
   let(:json) { JSON.parse(response.body) }
     
-  describe "GET /songs" do
+  describe "GET /albums/:album_id/songs" do
     
+    let(:album) do
+      FactoryGirl.create(:album, songs: FactoryGirl.create_list(:song, 10))
+    end
+
     before do
-      10.times { FactoryGirl.create(:song) }
-      get '/songs'
+      get "/albums/#{album.id}/songs"
     end
 
     it "returns songs" do
@@ -49,12 +52,12 @@ describe "Songs API" do
     end
   end
 
-  describe "POST /songs" do
+  describe "POST /albums/:album_id/songs" do
     
     let(:album) { FactoryGirl.create(:album) }
     
     before do
-      post '/songs', name: "Foo", album_id: album.id
+      post "/albums/#{album.id}/songs", name: "Foo"
     end
 
     it "creates an song" do

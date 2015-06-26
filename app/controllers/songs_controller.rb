@@ -12,7 +12,7 @@ class SongsController < ApplicationController
   end
 
   def create
-    @song = Song.new(song_params)
+    @song = songs.new(song_params)
     @song.save
     respond_with(@song)
   end

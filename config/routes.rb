@@ -5,14 +5,12 @@ Rails.application.routes.draw do
       get :ranked, on: :collection
       get :hot, on: :collection
     end
+    get 'songs/top_10', to: 'songs#top_10', as: :top_10_songs
     resources :albums, except: [:new, :edit] do
-      resources :songs
+      resources :songs, shallow: true
       get :recent, on: :collection
       get :ranked, on: :collection
       get :hot, on: :collection
-    end
-    resources :songs do 
-      get :top_10, on: :collection
     end
     root to: 'artists#index'
   end
