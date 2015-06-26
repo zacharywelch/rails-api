@@ -28,25 +28,12 @@ describe Album do
 
   it { should be_valid }
 
+  it_behaves_like "ranked"  
+
   context "when name is not present" do
     before { album.name = nil }
     it { should_not be_valid }
   end
-
-  # TODO refactor ranked and hot to shared examples
-  
-  describe "#hot" do
-    
-    context "when ranked in top 5" do
-      before { album.rank = 5 }
-      it { should be_hot }
-    end
-
-    context "when ranked below 5" do
-      before { album.rank = 6 }
-      it { should_not be_hot }
-    end
-  end  
 
   describe ".recent_releases" do
 
@@ -60,40 +47,4 @@ describe Album do
       expect(Album.recent_releases).to_not include album
     end
   end
-
-  describe ".ranked" do
-
-    before do 
-      FactoryGirl.create(:album, rank: 2)
-      FactoryGirl.create(:album, rank: 1)
-    end
-    
-    it "returns albums by rank" do
-      expect(Album.ranked.first.rank).to be 1
-      expect(Album.ranked.second.rank).to be 2
-    end
-  end  
-
-  describe ".top(n)" do
-
-    before do 
-      10.times { |i| FactoryGirl.create(:album, rank: i + 1) }
-    end
-    
-    it "returns the top n albums" do
-      expect(Album.top(2).first.rank).to be 1
-      expect(Album.top(2).second.rank).to be 2
-    end
-  end
-
-  describe ".hot" do
-
-    before do 
-      10.times { |i| FactoryGirl.create(:album, rank: i + 1) }
-    end
-    
-    it "returns the top 5 albums" do
-      expect(Album.hot.map(&:rank)).to eq [1,2,3,4,5]
-    end
-  end  
 end
