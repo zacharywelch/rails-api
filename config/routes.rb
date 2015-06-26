@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
     get 'songs/top_10', to: 'songs#top_10', as: :top_10_songs
     resources :albums, except: [:new, :edit] do
-      resources :songs, shallow: true
+      resources :songs, shallow: true, except: [:new, :edit]
       get :recent, on: :collection
       get :ranked, on: :collection
       get :hot, on: :collection
