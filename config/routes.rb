@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :songs
       get :recent, on: :collection
       get :ranked, on: :collection
+      get :hot, on: :collection
     end
     resources :songs
     root to: 'artists#index'

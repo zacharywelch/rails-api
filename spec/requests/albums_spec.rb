@@ -130,5 +130,19 @@ describe "Albums API" do
       expect(json).to be_an(Array)
       expect(json.length).to be 10
     end
+  end
+
+  describe "GET /albums/hot" do
+    
+    before do
+      10.times { FactoryGirl.create(:album) }
+      get '/albums/hot'
+    end
+
+    it "returns top 5 albums" do
+      expect(response).to be_success
+      expect(json).to be_an(Array)
+      expect(json.length).to be 5
+    end
   end  
 end

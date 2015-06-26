@@ -19,4 +19,10 @@ class Album < ActiveRecord::Base
 
   scope :recent_releases, -> { where("released_at > ?", 1.month.ago) }
   scope :ranked, -> { order(:rank) }
+  scope :top, ->(n) { ranked.limit(n) }
+  scope :hot, -> { top(5) }
+
+  def hot?
+    rank.between?(1, 5)
+  end  
 end

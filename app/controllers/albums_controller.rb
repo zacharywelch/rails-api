@@ -38,6 +38,11 @@ class AlbumsController < ApplicationController
     respond_with(@albums)
   end
 
+  def hot
+    @albums = Album.hot
+    respond_with(@albums)
+  end
+
   private
     def set_album
       @album = Album.find(params[:id])

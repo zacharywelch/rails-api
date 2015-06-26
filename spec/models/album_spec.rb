@@ -33,6 +33,19 @@ describe Album do
     it { should_not be_valid }
   end
 
+  describe "#hot" do
+    
+    context "when ranked in top 5" do
+      before { album.rank = 5 }
+      it { should be_hot }
+    end
+
+    context "when ranked below 5" do
+      before { album.rank = 6 }
+      it { should_not be_hot }
+    end
+  end  
+
   describe ".recent_releases" do
 
     it "includes albums released within a month" do
@@ -56,6 +69,29 @@ describe Album do
     it "returns albums by rank" do
       expect(Album.ranked.first.rank).to be 1
       expect(Album.ranked.second.rank).to be 2
+    end
+  end  
+
+  describe ".top(n)" do
+
+    before do 
+      10.times { |i| FactoryGirl.create(:album, rank: i + 1) }
+    end
+    
+    it "returns the top n albums" do
+      expect(Album.top(2).first.rank).to be 1
+      expect(Album.top(2).second.rank).to be 2
+    end
+  end
+
+  describe ".hot" do
+
+    before do 
+      10.times { |i| FactoryGirl.create(:album, rank: i + 1) }
+    end
+    
+    it "returns the top 5 albums" do
+      expect(Album.hot.map(&:rank)).to eq [1,2,3,4,5]
     end
   end  
 end
