@@ -49,8 +49,8 @@ describe Album do
   describe ".ranked" do
 
     before do 
-      FactoryGirl.create(:albums, rank: 2)
-      FactoryGirl.create(:albums, rank: 1)
+      FactoryGirl.create(:album, rank: 2)
+      FactoryGirl.create(:album, rank: 1)
     end
     
     it "returns albums by rank" do

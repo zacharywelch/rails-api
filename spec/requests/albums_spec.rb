@@ -21,7 +21,7 @@ describe "Albums API" do
   describe "GET /albums/:id" do
     
     let(:album) do
-      FactoryGirl.create(:album, name: "Foo", released_at: "2008-01-27", 
+      FactoryGirl.create(:album, name: "Foo", released_at: "2008-01-27", rank: 1,
                                  songs: FactoryGirl.create_list(:song, 10))
     end
     
@@ -42,6 +42,11 @@ describe "Albums API" do
     it "returns album with released_at" do
       expect(response).to be_success
       expect(json["released_at"]).to eq "2008-01-27"
+    end
+
+    it "returns album with rank" do
+      expect(response).to be_success
+      expect(json["rank"]).to be 1
     end
 
     it "returns 404 for album that doesn't exist" do
@@ -110,6 +115,20 @@ describe "Albums API" do
     it "returns albums released recently" do
       expect(response).to be_success
       expect(json.length).to be 5
+    end
+  end  
+
+  describe "GET /albums/ranked" do
+    
+    before do
+      10.times { FactoryGirl.create(:album) }
+      get '/albums/ranked'
+    end
+
+    it "returns artists by rank" do
+      expect(response).to be_success
+      expect(json).to be_an(Array)
+      expect(json.length).to be 10
     end
   end  
 end

@@ -32,7 +32,7 @@ class ArtistsController < ApplicationController
   end
 
   def ranked
-    @artists = Rails.cache.fetch "ranked", expires_in: 5.seconds do
+    @artists = Rails.cache.fetch "artists:ranked", expires_in: 5.seconds do
       Artist.ranked.to_a
     end
     respond_with(@artists)

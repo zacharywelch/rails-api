@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :albums, except: [:new, :edit] do
       resources :songs
       get :recent, on: :collection
+      get :ranked, on: :collection
     end
     resources :songs
     root to: 'artists#index'

@@ -18,4 +18,5 @@ class Album < ActiveRecord::Base
   validates :name, presence: true
 
   scope :recent_releases, -> { where("released_at > ?", 1.month.ago) }
+  scope :ranked, -> { order(:rank) }
 end

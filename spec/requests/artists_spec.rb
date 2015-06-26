@@ -130,20 +130,6 @@ describe "Artists API" do
     end
   end
 
-  describe "GET /artists/ranked" do
-    
-    before do
-      10.times { FactoryGirl.create(:artist) }
-      get '/artists/ranked'
-    end
-
-    it "returns artists by rank" do
-      expect(response).to be_success
-      expect(json).to be_an(Array)
-      expect(json.length).to be 10
-    end
-  end
-
   describe "GET /artists/hot" do
     
     before do

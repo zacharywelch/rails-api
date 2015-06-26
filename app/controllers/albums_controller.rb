@@ -27,8 +27,13 @@ class AlbumsController < ApplicationController
   end
 
   def recent
-    @albums = Rails.cache.fetch "recent", expires_in: 1.day do
-      Album.recent_releases.to_a
+    @albums = Album.recent_releases
+    respond_with(@albums)
+  end
+
+  def ranked
+    @albums = Rails.cache.fetch "albums:ranked", expires_in: 5.seconds do
+      Album.ranked.to_a
     end
     respond_with(@albums)
   end
