@@ -91,11 +91,9 @@ album = Album.create(name: "Around the World (feat. Fetty Wap) - Single",
 Song.create(name: "Around the World (feat. Fetty Wap)", album: album)
 
 
-# Randomize rankings
-Artist.all.shuffle.each_with_index do |artist, i|
-  artist.update_attributes(rank: i + 1)
-end
-
-Album.all.shuffle.each_with_index do |album, i|
-  album.update_attributes(rank: i + 1)
+# Randomize rankings for artists, albums, and songs
+[Artist, Album, Song].each do |klass|
+  klass.all.shuffle.each_with_index do |row, i|
+    row.update_attributes(rank: i + 1)
+  end
 end

@@ -11,7 +11,9 @@ Rails.application.routes.draw do
       get :ranked, on: :collection
       get :hot, on: :collection
     end
-    resources :songs
+    resources :songs do 
+      get :top_10, on: :collection
+    end
     root to: 'artists#index'
   end
 end
