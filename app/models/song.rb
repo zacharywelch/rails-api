@@ -11,8 +11,8 @@
 #
 
 class Song < ActiveRecord::Base
-  include Ranking
-  
+  has_ranking
   belongs_to :album
+
   validates :name, presence: true
 end
