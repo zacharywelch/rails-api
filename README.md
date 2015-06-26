@@ -42,4 +42,4 @@ Quick links include:
 - Logging
 - Authentication
 - ~~Caching~~
-- Pagination
+- ~~Pagination~~
