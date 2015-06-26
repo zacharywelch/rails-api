@@ -7,10 +7,48 @@
 #  album_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  rank       :integer
 #
 
 require 'rails_helper'
 
 describe Song do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  subject(:song) { FactoryGirl.create(:song, name: "Foo") }
+
+  it { should respond_to(:name) }
+  it { should respond_to(:rank) }
+  it { should respond_to(:album) }
+
+  it { should be_valid }
+
+  context "when name is not present" do
+    before { song.name = nil }
+    it { should_not be_valid }
+  end
+
+  describe ".ranked" do
+
+    before do 
+      FactoryGirl.create(:song, rank: 2)
+      FactoryGirl.create(:song, rank: 1)
+    end
+    
+    it "returns songs by rank" do
+      expect(Song.ranked.first.rank).to be 1
+      expect(Song.ranked.second.rank).to be 2
+    end
+  end  
+
+  describe ".top(n)" do
+
+    before do
+      10.times { |i| FactoryGirl.create(:song, rank: i + 1) }
+    end
+    
+    it "returns the top n songs" do
+      expect(Song.top(2).first.rank).to be 1
+      expect(Song.top(2).second.rank).to be 2
+    end
+  end
 end

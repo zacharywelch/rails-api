@@ -7,10 +7,14 @@
 #  album_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  rank       :integer
 #
 
 class Song < ActiveRecord::Base
   belongs_to :album
 
   validates :name, presence: true
+
+  scope :ranked, -> { order(:rank) }
+  scope :top, ->(n) { ranked.limit(n) }  
 end

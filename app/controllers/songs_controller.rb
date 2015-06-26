@@ -27,6 +27,11 @@ class SongsController < ApplicationController
     respond_with(@song)
   end
 
+  def top_10
+    @songs = Song.top(10)
+    respond_with(@songs)
+  end
+
   private
     def songs
       @album ? @album.songs : Song

@@ -7,11 +7,13 @@
 #  album_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  rank       :integer
 #
 
 FactoryGirl.define do
   factory :song do
-    name "MyString"
-    album nil
+    sequence(:name) { |n| "Song #{n}" }
+    sequence(:rank)
+    album
   end
 end
