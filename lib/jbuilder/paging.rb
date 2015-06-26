@@ -7,7 +7,9 @@ module Jbuilder::Paging
     set! :collection, collection, *args
   end
 
-  def _paginated?(collection)
+  private
+
+  def paginated?(collection)
     collection.respond_to? :total_pages
   end
 end

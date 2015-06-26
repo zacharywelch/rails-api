@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.shared_examples "ranked" do
+shared_examples "ranked" do
 
   let(:factory) { described_class.name.underscore.to_sym }
 

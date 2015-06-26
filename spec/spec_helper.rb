@@ -40,6 +40,9 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  # add custom alias for has hehavior
+  config.alias_it_should_behave_like_to :it_has_behavior, 'has behavior:'
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

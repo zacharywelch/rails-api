@@ -18,6 +18,8 @@ describe "Songs API" do
     end
   end
 
+  it_has_behavior "pagination", "/songs", :song
+
   describe "GET /albums/:album_id/songs" do
     
     let(:album) do
@@ -138,18 +140,4 @@ describe "Songs API" do
       expect(json.length).to be 5
     end
   end 
-
-  describe "paging" do
-
-    before do
-      FactoryGirl.create_list :song, 30
-      get '/songs?page=1'
-    end
-
-    it "returns page" do
-      expect(response).to be_success
-      expect(json).to be_an(Array)
-      expect(json.length).to be 25
-    end
-  end
 end
