@@ -18,6 +18,8 @@ describe "Albums API" do
     end
   end
 
+  it_has_behavior "pagination", "/albums", :album
+
   describe "GET /artists/:artist_id/albums" do
     
     let(:artist) do

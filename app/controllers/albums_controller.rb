@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :update, :destroy]
 
   def index
-    @albums = albums.all
+    @albums = albums.page(params[:page])
     respond_with(@albums)
   end
 
