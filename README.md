@@ -39,7 +39,7 @@ Quick links include:
 - ~~Routing~~
 - ~~Managing complex queries (scopes)~~
 - ~~Support for different environments~~
-- Logging
+- ~~Logging~~
 - Authentication
 - ~~Caching~~
 - ~~Pagination~~
