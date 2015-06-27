@@ -18,6 +18,23 @@ describe "Albums API" do
     end
   end
 
+  describe "GET /artists/:artist_id/albums" do
+    
+    let(:artist) do
+      FactoryGirl.create(:artist, albums: FactoryGirl.create_list(:album, 10))
+    end
+
+    before do
+      get "/artists/#{artist.id}/albums"
+    end
+
+    it "returns albums" do
+      expect(response).to be_success
+      expect(json).to be_an(Array)
+      expect(json.length).to be 10
+    end
+  end
+
   describe "GET /albums/:id" do
     
     let(:album) do
@@ -61,10 +78,10 @@ describe "Albums API" do
     end
   end
 
-  describe "POST /albums" do
+  describe "POST /artists/:artist_id/albums" do
     
     before do
-      post '/albums', name: "Foo", released_at: "2008-01-27"
+      post '/artists/:artist_id/albums', name: "Foo", released_at: "2008-01-27"
     end
 
     it "creates an album" do
@@ -107,7 +124,7 @@ describe "Albums API" do
   describe "GET /albums/recent" do
     
     before do
-      FactoryGirl.create_list :album, 5, released_at: 2.months.ago
+      FactoryGirl.create_list :album, 5
       FactoryGirl.create_list :recent_album, 5
       get '/albums/recent'
     end

@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :update, :destroy]
 
   def index
-    @albums = Album.all
+    @albums = albums.all
     respond_with(@albums)
   end
 
@@ -11,7 +11,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.new(album_params)
+    @album = albums.new(album_params)
     @album.save
     respond_with(@album)
   end
@@ -44,11 +44,19 @@ class AlbumsController < ApplicationController
   end
 
   private
+    def albums
+      @artist ? @artist.albums : Album
+    end
+
     def set_album
       @album = Album.find(params[:id])
     end
 
     def album_params
       params.permit(:name, :released_at, :artist_id)
+    end
+
+    def set_artist
+      @artist = Artist.find(params[:artist_id]) if params[:artist_id]
     end
 end
