@@ -7,7 +7,7 @@ describe "Artists API" do
   describe "GET /artists" do
     
     before do
-      10.times { FactoryGirl.create(:artist) }
+      FactoryGirl.create_list :artist, 10
       get '/artists'
     end
 
@@ -98,7 +98,7 @@ describe "Artists API" do
   describe "GET /artists/featured" do
     
     before do
-      10.times { FactoryGirl.create(:artist, featured: true) }
+      FactoryGirl.create_list :artist, 10, featured: true
       get '/artists/featured'
     end
 
@@ -119,7 +119,7 @@ describe "Artists API" do
   describe "GET /artists/ranked" do
     
     before do
-      10.times { FactoryGirl.create(:artist) }
+      FactoryGirl.create_list :artist, 10
       get '/artists/ranked'
     end
 
@@ -133,7 +133,7 @@ describe "Artists API" do
   describe "GET /artists/hot" do
     
     before do
-      10.times { FactoryGirl.create(:artist) }
+      FactoryGirl.create_list :artist, 10
       get '/artists/hot'
     end
 
