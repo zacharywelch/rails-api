@@ -7,7 +7,7 @@ describe "Songs API" do
   describe "GET /songs" do
     
     before do
-      FactoryGirl.create_list :song, 10
+      create_list :song, 10
       get '/songs'
     end
 
@@ -23,7 +23,7 @@ describe "Songs API" do
   describe "GET /albums/:album_id/songs" do
     
     let(:album) do
-      FactoryGirl.create(:album, songs: FactoryGirl.create_list(:song, 10))
+      create :album, songs: create_list(:song, 10)
     end
 
     before do
@@ -40,7 +40,7 @@ describe "Songs API" do
   describe "GET /songs/:id" do
     
     let(:song) do
-      FactoryGirl.create(:song, name: "Foo", rank: 1)
+      create :song, name: "Foo", rank: 1
     end
     
     before do
@@ -70,7 +70,7 @@ describe "Songs API" do
 
   describe "POST /albums/:album_id/songs" do
     
-    let(:album) { FactoryGirl.create(:album) }
+    let(:album) { create :album }
     
     before do
       post "/albums/#{album.id}/songs", name: "Foo"
@@ -86,7 +86,7 @@ describe "Songs API" do
 
   describe "PUT /songs/:id" do
     
-    let(:song) { FactoryGirl.create(:song, name: "Foo") }
+    let(:song) { create :song, name: "Foo" }
 
     before do
       put "/songs/#{song.id}", name: "Bar"
@@ -100,7 +100,7 @@ describe "Songs API" do
 
   describe "DELETE /songs/:id" do
     
-    let(:song) { FactoryGirl.create(:song) }
+    let(:song) { create :song }
     
     before do
       delete "/songs/#{song.id}"
@@ -116,7 +116,7 @@ describe "Songs API" do
   describe "GET /songs/top_25" do
     
     before do
-      FactoryGirl.create_list :song, 30
+      create_list :song, 30
       get '/songs/top_25'
     end
 
@@ -130,7 +130,7 @@ describe "Songs API" do
   describe "GET /songs/hot" do
     
     before do
-      FactoryGirl.create_list :song, 10
+      create_list :song, 10
       get '/songs/hot'
     end
 

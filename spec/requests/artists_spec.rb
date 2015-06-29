@@ -7,7 +7,7 @@ describe "Artists API" do
   describe "GET /artists" do
     
     before do
-      FactoryGirl.create_list :artist, 10
+      create_list :artist, 10
       get '/artists'
     end
 
@@ -20,7 +20,7 @@ describe "Artists API" do
 
   describe "GET /artists/:id" do
     
-    let(:artist) { FactoryGirl.create(:artist, name: "Foo", rank: 1) }
+    let(:artist) { create :artist, name: "Foo", rank: 1 }
     
     before do
       get "/artists/#{artist.id}"
@@ -68,7 +68,7 @@ describe "Artists API" do
 
   describe "PUT /artists/:id" do
     
-    let(:artist) { FactoryGirl.create(:artist, name: "Foo") }
+    let(:artist) { create :artist, name: "Foo" }
 
     before do
       put "/artists/#{artist.id}", name: "Bar"
@@ -82,7 +82,7 @@ describe "Artists API" do
 
   describe "DELETE /artists/:id" do
     
-    let(:artist) { FactoryGirl.create(:artist) }
+    let(:artist) { create :artist }
     
     before do
       delete "/artists/#{artist.id}"
@@ -98,7 +98,7 @@ describe "Artists API" do
   describe "GET /artists/featured" do
     
     before do
-      FactoryGirl.create_list :artist, 10, featured: true
+      create_list :artist, 10, featured: true
       get '/artists/featured'
     end
 
@@ -119,7 +119,7 @@ describe "Artists API" do
   describe "GET /artists/ranked" do
     
     before do
-      FactoryGirl.create_list :artist, 10
+      create_list :artist, 10
       get '/artists/ranked'
     end
 
@@ -133,7 +133,7 @@ describe "Artists API" do
   describe "GET /artists/hot" do
     
     before do
-      FactoryGirl.create_list :artist, 10
+      create_list :artist, 10
       get '/artists/hot'
     end
 

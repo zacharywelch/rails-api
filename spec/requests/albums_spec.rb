@@ -7,7 +7,7 @@ describe "Albums API" do
   describe "GET /albums" do
     
     before do
-      FactoryGirl.create_list :album, 10
+      create_list :album, 10
       get '/albums'
     end
 
@@ -23,7 +23,7 @@ describe "Albums API" do
   describe "GET /artists/:artist_id/albums" do
     
     let(:artist) do
-      FactoryGirl.create(:artist, albums: FactoryGirl.create_list(:album, 10))
+      create :artist, albums: create_list(:album, 10)
     end
 
     before do
@@ -40,8 +40,8 @@ describe "Albums API" do
   describe "GET /albums/:id" do
     
     let(:album) do
-      FactoryGirl.create(:album, name: "Foo", released_at: "2008-01-27", rank: 1,
-                                 songs: FactoryGirl.create_list(:song, 10))
+      create :album, name: "Foo", released_at: "2008-01-27", rank: 1,
+                                  songs: create_list(:song, 10)
     end
     
     before do
@@ -82,7 +82,7 @@ describe "Albums API" do
 
   describe "POST /artists/:artist_id/albums" do
     
-    let(:artist) { FactoryGirl.create(:artist) }
+    let(:artist) { create :artist }
     
     before do
       post "/artists/#{artist.id}/albums", name: "Foo", released_at: "2008-01-27"
@@ -98,7 +98,7 @@ describe "Albums API" do
 
   describe "PUT /albums/:id" do
     
-    let(:album) { FactoryGirl.create(:album, name: "Foo") }
+    let(:album) { create :album, name: "Foo" }
 
     before do
       put "/albums/#{album.id}", name: "Bar"
@@ -112,7 +112,7 @@ describe "Albums API" do
 
   describe "DELETE /albums/:id" do
     
-    let(:album) { FactoryGirl.create(:album) }
+    let(:album) { create :album }
     
     before do
       delete "/albums/#{album.id}"
@@ -128,8 +128,8 @@ describe "Albums API" do
   describe "GET /albums/recent" do
     
     before do
-      FactoryGirl.create_list :album, 5
-      FactoryGirl.create_list :recent_album, 5
+      create_list :album, 5
+      create_list :recent_album, 5
       get '/albums/recent'
     end
 
@@ -142,7 +142,7 @@ describe "Albums API" do
   describe "GET /albums/ranked" do
     
     before do
-      FactoryGirl.create_list :album, 10
+      create_list :album, 10
       get '/albums/ranked'
     end
 
@@ -156,7 +156,7 @@ describe "Albums API" do
   describe "GET /albums/hot" do
     
     before do
-      FactoryGirl.create_list :album, 10
+      create_list :album, 10
       get '/albums/hot'
     end
 
