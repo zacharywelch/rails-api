@@ -1,6 +1,6 @@
 module Responders::PaginationResponder
   
-  def respond(*)
+  def respond
     if paginated?
       controller.headers.merge! "Pagination-Limit" => resource.limit_value.to_s, 
                                 "Pagination-Offset" => resource.offset_value.to_s,
