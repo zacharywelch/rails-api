@@ -7,8 +7,8 @@ shared_examples "ranked" do
   describe ".ranked" do
     
     before do
-      FactoryGirl.create(factory, rank: 2)
-      FactoryGirl.create(factory, rank: 1)
+      create factory, rank: 2
+      create factory, rank: 1
     end
     
     it "returns #{described_class.model_name.plural} by rank" do
@@ -20,7 +20,7 @@ shared_examples "ranked" do
   describe ".top(n)" do
 
     before do 
-      10.times { |i| FactoryGirl.create(factory, rank: i + 1) }
+      10.times { |i| create(factory, rank: i + 1) }
     end
     
     it "returns the top n #{described_class.model_name.plural}" do
@@ -45,7 +45,7 @@ shared_examples "ranked" do
   describe ".hot" do
 
     before do 
-      10.times { |i| FactoryGirl.create(factory, rank: i + 1) }
+      10.times { |i| create(factory, rank: i + 1) }
     end
     
     it "returns the top 5 #{described_class.model_name.plural}" do
