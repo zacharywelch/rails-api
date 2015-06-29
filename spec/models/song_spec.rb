@@ -14,7 +14,7 @@ require 'rails_helper'
 
 describe Song do
   
-  subject(:song) { FactoryGirl.create(:song, name: "Foo") }
+  subject(:song) { create :song, name: "Foo" }
 
   it { should respond_to(:name) }
   it { should respond_to(:rank) }

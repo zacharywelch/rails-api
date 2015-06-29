@@ -14,7 +14,7 @@ require 'rails_helper'
 
 describe Artist do
   
-  subject(:artist) { FactoryGirl.create(:artist, name: "Foo") }
+  subject(:artist) { create :artist, name: "Foo" }
 
   it { should respond_to(:name) }
   it { should respond_to(:rank) }
@@ -34,12 +34,12 @@ describe Artist do
   describe ".featured" do
 
     it "includes featured artists" do
-      artist = FactoryGirl.create(:artist, featured: true)
+      artist = create :artist, featured: true
       expect(Artist.featured).to include artist
     end
 
     it "excludes artists not featured" do
-      artist = FactoryGirl.create(:artist)
+      artist = create :artist
       expect(Artist.featured).to_not include artist
     end
   end

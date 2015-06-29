@@ -16,7 +16,7 @@ require 'rails_helper'
 describe Album do
 
   subject(:album) do
-    FactoryGirl.create(:album, name: "Foo", released_at: "2008-01-27")
+    create :album, name: "Foo", released_at: "2008-01-27"
   end
 
   it { should respond_to(:name) }
@@ -38,12 +38,12 @@ describe Album do
   describe ".recent_releases" do
 
     it "includes albums released within a month" do
-      album = FactoryGirl.create(:recent_album)
+      album = create :recent_album
       expect(Album.recent_releases).to include album
     end
 
     it "excludes albums released more than a month ago" do
-      album = FactoryGirl.create(:album, released_at: 2.months.ago)
+      album = create :album, released_at: 2.months.ago
       expect(Album.recent_releases).to_not include album
     end
   end
