@@ -43,3 +43,8 @@ Quick links include:
 - Authentication
 - ~~Caching~~
 - ~~Pagination~~
+
+### Future Ideas
+
+- Job Queue
+- Mailers
