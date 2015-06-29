@@ -1,6 +1,6 @@
 module Responders::JsonResponder    
   
-  # return 200 instead of 204 for updates
+  # return resource with 200 instead of 204 for updates
   def api_behavior
     if put?
       display resource, status: :ok, location: api_location
