@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :update, :destroy]
+  before_action :set_artist
 
   def index
     @albums = albums.page(params[:page])

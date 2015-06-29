@@ -82,8 +82,10 @@ describe "Albums API" do
 
   describe "POST /artists/:artist_id/albums" do
     
+    let(:artist) { FactoryGirl.create(:artist) }
+    
     before do
-      post '/artists/:artist_id/albums', name: "Foo", released_at: "2008-01-27"
+      post "/artists/#{artist.id}/albums", name: "Foo", released_at: "2008-01-27"
     end
 
     it "creates an album" do
