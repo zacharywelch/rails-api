@@ -103,8 +103,8 @@ describe "Albums API" do
     end
 
     it "updates an album" do
-      expect(response.status).to be 204
-      expect(response.body).to be_empty
+      expect(response).to be_success
+      expect(json["name"]).to eq "Bar"
     end
   end
 

@@ -93,8 +93,8 @@ describe "Songs API" do
     end
 
     it "updates a song" do
-      expect(response.status).to be 204
-      expect(response.body).to be_empty
+      expect(response).to be_success
+      expect(json["name"]).to eq "Bar"
     end
   end
 
