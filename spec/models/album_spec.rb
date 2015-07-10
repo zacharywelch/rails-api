@@ -26,14 +26,11 @@ describe Album do
   it { should respond_to(:artist) }
   it { should respond_to(:songs) }
 
+  it { should validate_presence_of(:name) }
+
   it { should be_valid }
 
   it_behaves_like "ranked"  
-
-  context "when name is not present" do
-    before { album.name = nil }
-    it { should_not be_valid }
-  end
 
   describe ".recent_releases" do
 

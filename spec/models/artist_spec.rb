@@ -21,15 +21,12 @@ describe Artist do
   it { should respond_to(:albums) }
   it { should respond_to(:songs) }
 
+  it { should validate_presence_of(:name) }
+
   it { should be_valid }
   it { should_not be_featured }
 
   it_behaves_like "ranked"
-
-  context "when name is not present" do
-    before { artist.name = nil }
-    it { should_not be_valid }
-  end
 
   describe ".featured" do
 

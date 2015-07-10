@@ -20,12 +20,10 @@ describe Song do
   it { should respond_to(:rank) }
   it { should respond_to(:album) }
 
+  it { should validate_presence_of(:name) }
+
   it { should be_valid }
 
   it_behaves_like "ranked"
 
-  context "when name is not present" do
-    before { song.name = nil }
-    it { should_not be_valid }
-  end
 end
