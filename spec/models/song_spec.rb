@@ -20,10 +20,9 @@ describe Song do
   it { should respond_to(:rank) }
   it { should respond_to(:album) }
 
-  it { should validate_presence_of(:name) }
-
   it { should be_valid }
 
-  it_behaves_like "ranked"
+  it { should validate_presence_of(:name) }  
 
+  it_behaves_like "ranked"
 end

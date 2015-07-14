@@ -21,10 +21,10 @@ describe Artist do
   it { should respond_to(:albums) }
   it { should respond_to(:songs) }
 
-  it { should validate_presence_of(:name) }
-
   it { should be_valid }
   it { should_not be_featured }
+  
+  it { should validate_presence_of(:name) }
 
   it_behaves_like "ranked"
 
