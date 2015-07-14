@@ -48,4 +48,5 @@ Quick links include:
 
 - Job Queue
 - Mailers
-- [Application Template](http://guides.rubyonrails.org/generators.html)
+- ~~[Application Template](http://guides.rubyonrails.org/generators.html)~~
+- Benchmarks
