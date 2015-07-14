@@ -22,10 +22,7 @@ describe Song do
 
   it { should be_valid }
 
-  it_behaves_like "ranked"
+  it { should validate_presence_of(:name) }  
 
-  context "when name is not present" do
-    before { song.name = nil }
-    it { should_not be_valid }
-  end
+  it_behaves_like "ranked"
 end

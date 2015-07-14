@@ -16,6 +16,10 @@ group :development do
   gem 'annotate'
 end
 
+group :test do
+  gem 'shoulda-matchers'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
