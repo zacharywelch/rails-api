@@ -48,5 +48,5 @@ Quick links include:
 
 - Job Queue
 - Mailers
-- ~~[Application Template](http://guides.rubyonrails.org/generators.html)~~
+- ~~[Application Template](https://cagit.careerbuilder.com/zwelch/rails-api-template)~~
 - Benchmarks
