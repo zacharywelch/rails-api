@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users, except: [:new, :edit]
   scope defaults: { format: :json } do
     resources :artists, except: [:new, :edit] do
       get :featured, :ranked, :hot, on: :collection
