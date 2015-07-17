@@ -21,6 +21,13 @@ GIT
     rails_api_filters (0.0.1)
       rails (~> 4.0)
 
+GIT
+  remote: git@cagit.careerbuilder.com:zwelch/rails_api_sortable.git
+  revision: 6a33121e2ff5a5e88caa84af1e4dce1a9efc4bd9
+  specs:
+    rails_api_sortable (0.0.1)
+      rails (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -172,6 +179,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails-api
   rails_api_filters!
+  rails_api_sortable!
   responders
   rspec-rails
   shoulda-matchers
