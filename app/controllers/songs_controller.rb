@@ -1,9 +1,9 @@
 class SongsController < ApplicationController
-  before_action :set_songs, only: :index
   before_action :set_song, only: [:show, :update, :destroy]
   before_action :set_album
   
   def index
+    @songs = songs.page(params[:page])    
     respond_with(@songs)
   end
 
@@ -40,10 +40,6 @@ class SongsController < ApplicationController
   private
     def songs
       @album ? @album.songs : Song
-    end
-
-    def set_songs
-      @songs = songs.where(song_params).order(sort_by).page(params[:page])
     end
 
     def set_song
