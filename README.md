@@ -51,3 +51,4 @@ Quick links include:
 - ~~[Application Template](https://cagit.careerbuilder.com/zwelch/rails-api-template)~~
 - Sorting
 - Filtering
+- Capistrano configuration
