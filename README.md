@@ -42,13 +42,13 @@ Quick links include:
 - ~~Logging~~
 - Authentication
 - ~~Caching~~
-- ~~Pagination~~
+- ~~[Pagination](https://cagit.careerbuilder.com/zwelch/pagination_responder)~~
 
 ### Future Ideas
 
 - Job Queue
 - Mailers
 - ~~[Application Template](https://cagit.careerbuilder.com/zwelch/rails-api-template)~~
-- Sorting
-- Filtering
+- ~~[Sorting](https://cagit.careerbuilder.com/zwelch/rails_api_sortable)~~
+- ~~[Filtering](https://cagit.careerbuilder.com/zwelch/rails-api-template)~~
 - Capistrano configuration
