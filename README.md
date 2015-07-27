@@ -1,4 +1,4 @@
-## Rails API Template
+## Rails API
 
 Sample music API using Rails
 
