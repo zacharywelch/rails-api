@@ -40,7 +40,7 @@ Quick links include:
 - ~~Managing complex queries (scopes)~~
 - ~~Support for different environments~~
 - ~~Logging~~
-- Authentication
+- [Authentication](https://cagit.careerbuilder.com/zwelch/partner_authentication)
 - ~~Caching~~
 - ~~[Pagination](https://cagit.careerbuilder.com/zwelch/pagination_responder)~~
 
