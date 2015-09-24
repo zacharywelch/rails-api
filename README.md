@@ -51,4 +51,5 @@ Quick links include:
 - ~~[Application Template](https://cagit.careerbuilder.com/zwelch/rails-api-template)~~
 - ~~[Sorting](https://cagit.careerbuilder.com/zwelch/rails_api_sortable)~~
 - ~~[Filtering](https://cagit.careerbuilder.com/zwelch/rails-api-template)~~
-- Capistrano configuration
+- ~~[Capistrano configuration](https://cagit.careerbuilder.com/zwelch/rails-api-template)~~
+- ~~Request Id~~

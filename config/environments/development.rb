@@ -38,4 +38,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Tagged logging for Request Id and IP.
+  # http://railscasts.com/episodes/318-upgrading-to-rails-3-2?view=asciicast
+  config.log_tags = [:uuid, :remote_ip]  
 end
