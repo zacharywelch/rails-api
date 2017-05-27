@@ -1,29 +1,13 @@
 GIT
-  remote: git@cagit.careerbuilder.com:zwelch/json_responder.git
-  revision: 00f4e1c9a78c9b20d786b72b1cf09c863a4c6e74
+  remote: git@github.com:zacharywelch/paginate-responder.git
+  revision: dad394ac75a785434671dc96c5b981147aaa44f6
   specs:
-    json_responder (0.0.1)
-      rails (~> 4.0)
-      responders
+    paginate-responder (1.4.3.beta0)
+      rack-link_headers (>= 2.2)
 
 GIT
-  remote: git@cagit.careerbuilder.com:zwelch/pagination_responder.git
-  revision: 55076003c6e942dbdae149da28e7c2f344e9691f
-  specs:
-    pagination_responder (0.0.1)
-      rails (~> 4.0)
-      responders
-
-GIT
-  remote: git@cagit.careerbuilder.com:zwelch/rails_api_filters.git
-  revision: b45c20cdeda196a6be69c19c0d06c868d65a338a
-  specs:
-    rails_api_filters (0.0.1)
-      rails (~> 4.0)
-
-GIT
-  remote: git@cagit.careerbuilder.com:zwelch/rails_api_sortable.git
-  revision: 6a33121e2ff5a5e88caa84af1e4dce1a9efc4bd9
+  remote: git@github.com:zacharywelch/rails_api_sortable.git
+  revision: d77aee4b1fd7345d9dd90312e9154352ebb54554
   specs:
     rails_api_sortable (0.0.1)
       rails (~> 4.0)
@@ -101,6 +85,8 @@ GEM
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     rack (1.6.4)
+    rack-link_headers (2.2.2)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -173,15 +159,16 @@ DEPENDENCIES
   factory_girl_rails
   faker
   jbuilder
-  json_responder!
   kaminari
-  pagination_responder!
+  paginate-responder!
   rails (= 4.2.0)
   rails-api
-  rails_api_filters!
   rails_api_sortable!
   responders
   rspec-rails
   shoulda-matchers
   spring
   sqlite3
+
+BUNDLED WITH
+   1.14.2
