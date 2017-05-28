@@ -1,8 +1,8 @@
 class ArtistsController < ApplicationController
+  before_action :set_artists, only: :index
   before_action :set_artist, only: [:show, :update, :destroy]
 
   def index
-    @artists = Artist.all
     respond_with(@artists)
   end
 
@@ -44,6 +44,10 @@ class ArtistsController < ApplicationController
   end
 
   private
+    def set_artists
+      @artists = Artist.where(artist_params).order(sort_by).page(params[:page])
+    end
+
     def set_artist
       @artist = Artist.find(params[:id])
     end

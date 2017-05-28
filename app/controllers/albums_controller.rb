@@ -1,9 +1,9 @@
 class AlbumsController < ApplicationController
+  before_action :set_albums, only: :index
   before_action :set_album, only: [:show, :update, :destroy]
   before_action :set_artist
 
   def index
-    @albums = albums.page(params[:page])
     respond_with(@albums)
   end
 
@@ -47,6 +47,10 @@ class AlbumsController < ApplicationController
   private
     def albums
       @artist ? @artist.albums : Album
+    end
+
+    def set_albums
+      @albums = albums.where(album_params).order(sort_by).page(params[:page])
     end
 
     def set_album
