@@ -1,9 +1,10 @@
 GIT
-  remote: git@github.com:zacharywelch/paginate-responder.git
-  revision: dad394ac75a785434671dc96c5b981147aaa44f6
+  remote: git@github.com:zacharywelch/json_responder.git
+  revision: d9c7238c7625ddce707b23e5794fc9a9eac8f6e5
   specs:
-    paginate-responder (1.4.3.beta0)
-      rack-link_headers (>= 2.2)
+    json_responder (0.0.1)
+      rails (~> 4.0)
+      responders
 
 GIT
   remote: git@github.com:zacharywelch/rails_api_sortable.git
@@ -85,8 +86,6 @@ GEM
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     rack (1.6.4)
-    rack-link_headers (2.2.2)
-      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -159,8 +158,8 @@ DEPENDENCIES
   factory_girl_rails
   faker
   jbuilder
+  json_responder!
   kaminari
-  paginate-responder!
   rails (= 4.2.0)
   rails-api
   rails_api_sortable!
@@ -171,4 +170,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.14.2
+   1.16.5
