@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "file:/artist.json#",
+  "id": "file:/album.json#",
   "type": "object",
   "required": [
     "id",
@@ -13,8 +13,11 @@
     "name": {
       "type": "string"
     },
-    "featured": {
-      "type": "boolean"
+    "released_at": {
+      "type": "string"
+    },
+    "artist_id": {
+      "type": "integer"
     },
     "rank": {
       "type": [
@@ -27,6 +30,12 @@
     },
     "updated_at": {
       "type": "string"
+    },
+    "songs": {
+      "type": "array",
+      "items": {
+        "$ref": "file:/song.json#"
+      }
     }
   }
 }

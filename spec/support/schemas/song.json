@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "file:/artist.json#",
+  "id": "file:/song.json#",
   "type": "object",
   "required": [
     "id",
@@ -13,8 +13,8 @@
     "name": {
       "type": "string"
     },
-    "featured": {
-      "type": "boolean"
+    "album_id": {
+      "type": "integer"
     },
     "rank": {
       "type": [
