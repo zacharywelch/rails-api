@@ -14,8 +14,6 @@ shared_examples "pagination" do |path, factory, attributes = {}|
   end
 
   it "has pagination headers" do
-    expect(response.headers).to include "Pagination-Limit"
-    expect(response.headers).to include "Pagination-Offset"
-    expect(response.headers).to include "Pagination-Count"
+    expect(response.headers).to include "Link" => "<http://www.example.com#{path}?page=1>; rel=\"first\", <http://www.example.com#{path}?page=2>; rel=\"next\", <http://www.example.com#{path}?page=2>; rel=\"last\""
   end
 end
