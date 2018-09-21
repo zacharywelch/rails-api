@@ -5,12 +5,12 @@ shared_examples "ranked" do
   let(:factory) { described_class.name.underscore.to_sym }
 
   describe ".ranked" do
-    
+
     before do
       create factory, rank: 2
       create factory, rank: 1
     end
-    
+
     it "returns #{described_class.model_name.plural} by rank" do
       expect(described_class.ranked.first.rank).to be 1
       expect(described_class.ranked.second.rank).to be 2
@@ -19,10 +19,10 @@ shared_examples "ranked" do
 
   describe ".top(n)" do
 
-    before do 
+    before do
       10.times { |i| create(factory, rank: i + 1) }
     end
-    
+
     it "returns the top n #{described_class.model_name.plural}" do
       expect(described_class.top(2).first.rank).to be 1
       expect(described_class.top(2).second.rank).to be 2
@@ -30,7 +30,7 @@ shared_examples "ranked" do
   end
 
   describe "#hot" do
-    
+
     context "when ranked in top 5" do
       before { subject.rank = 5 }
       it { should be_hot }
@@ -44,12 +44,12 @@ shared_examples "ranked" do
 
   describe ".hot" do
 
-    before do 
+    before do
       10.times { |i| create(factory, rank: i + 1) }
     end
-    
+
     it "returns the top 5 #{described_class.model_name.plural}" do
       expect(described_class.hot.map(&:rank)).to eq [1,2,3,4,5]
     end
-  end  
+  end
 end
