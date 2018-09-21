@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe "Artists API" do
-  
+
   let(:json) { JSON.parse(response.body) }
-    
+
   describe "GET /artists" do
-    
+
     before do
       create_list :artist, 10
       get '/artists'
@@ -15,15 +15,22 @@ describe "Artists API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
+      expect(response).to match_response_schema('artists')
     end
   end
 
+  it_has_behavior "pagination", "/artists", :artist
+
   describe "GET /artists/:id" do
-    
+
     let(:artist) { create :artist, name: "Foo", rank: 1 }
-    
+
     before do
       get "/artists/#{artist.id}"
+    end
+
+    it "returns an artist" do
+      expect(response).to match_response_schema('artist')
     end
 
     it "returns artist by id" do
@@ -53,7 +60,7 @@ describe "Artists API" do
   end
 
   describe "POST /artists" do
-    
+
     before do
       post '/artists', name: "Foo", featured: true
     end
@@ -67,7 +74,7 @@ describe "Artists API" do
   end
 
   describe "PUT /artists/:id" do
-    
+
     let(:artist) { create :artist, name: "Foo" }
 
     before do
@@ -76,14 +83,15 @@ describe "Artists API" do
 
     it "updates an artist" do
       expect(response).to be_success
+      expect(response).to match_response_schema('artist')
       expect(json["name"]).to eq "Bar"
     end
   end
 
   describe "DELETE /artists/:id" do
-    
+
     let(:artist) { create :artist }
-    
+
     before do
       delete "/artists/#{artist.id}"
     end
@@ -93,10 +101,10 @@ describe "Artists API" do
       get "/artists/#{artist.id}"
       expect(response).to be_missing
     end
-  end  
+  end
 
   describe "GET /artists/featured" do
-    
+
     before do
       create_list :artist, 10, featured: true
       get '/artists/featured'
@@ -106,18 +114,19 @@ describe "Artists API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
+      expect(response).to match_response_schema('artists')
     end
 
     it "returns artists that are featured" do
       expect(response).to be_success
       json.each do |artist|
         expect(artist["featured"]).to be true
-      end 
+      end
     end
-  end  
+  end
 
   describe "GET /artists/ranked" do
-    
+
     before do
       create_list :artist, 10
       get '/artists/ranked'
@@ -127,11 +136,12 @@ describe "Artists API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
+      expect(response).to match_response_schema('artists')
     end
   end
 
   describe "GET /artists/hot" do
-    
+
     before do
       create_list :artist, 10
       get '/artists/hot'
@@ -141,6 +151,7 @@ describe "Artists API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 5
+      expect(response).to match_response_schema('artists')
     end
-  end  
+  end
 end

@@ -1,0 +1,7 @@
+{
+  "id": "file:/artists.json#",
+  "type": "array",
+  "items": {
+    "$ref": "file:/artist.json#"
+  }
+}
