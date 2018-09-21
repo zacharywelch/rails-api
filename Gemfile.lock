@@ -1,4 +1,12 @@
 GIT
+  remote: git@github.com:zacharywelch/json_responder.git
+  revision: d9c7238c7625ddce707b23e5794fc9a9eac8f6e5
+  specs:
+    json_responder (0.0.1)
+      rails (~> 4.0)
+      responders
+
+GIT
   remote: git@github.com:zacharywelch/paginate-responder.git
   revision: dad394ac75a785434671dc96c5b981147aaa44f6
   specs:
@@ -159,6 +167,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   jbuilder
+  json_responder!
   kaminari
   paginate-responder!
   rails (= 4.2.0)
@@ -171,4 +180,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.14.2
+   1.16.5
