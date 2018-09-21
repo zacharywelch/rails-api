@@ -18,6 +18,7 @@ end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'json_matchers'
 end
 
 group :development, :test do
