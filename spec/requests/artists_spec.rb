@@ -67,7 +67,7 @@ describe "Artists API" do
 
     it "creates an artist" do
       expect(response).to be_created
-      expect(json).to include "id"
+      expect(response).to match_response_schema('artist')
       expect(json["name"]).to eq "Foo"
       expect(json["featured"]).to be true
     end

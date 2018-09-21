@@ -17,7 +17,10 @@
       "type": "boolean"
     },
     "rank": {
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "created_at": {
       "type": "string"
