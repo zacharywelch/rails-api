@@ -14,7 +14,8 @@
       "type": "string"
     },
     "released_at": {
-      "type": "string"
+      "type": "string",
+      "format": "date"
     },
     "artist_id": {
       "type": "integer"
@@ -26,10 +27,12 @@
       ]
     },
     "created_at": {
-      "type": "string"
+      "type": "string",
+      "format": "date-time"
     },
     "updated_at": {
-      "type": "string"
+      "type": "string",
+      "format": "date-time"
     },
     "songs": {
       "type": "array",
