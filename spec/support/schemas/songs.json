@@ -3,6 +3,18 @@
   "id": "file:/songs.json#",
   "type": "array",
   "items": {
-    "$ref": "file:/song.json#"
+    "allOf": [
+      {
+        "$ref": "file:/song.json#"
+      },
+      {
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    ]
   }
 }
