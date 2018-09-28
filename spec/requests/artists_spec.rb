@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe "Artists API" do
 
-  let(:json) { JSON.parse(response.body) }
-
   describe "GET /artists" do
 
     before do
@@ -13,9 +11,8 @@ describe "Artists API" do
 
     it "returns artists" do
       expect(response).to be_success
-      expect(json).to be_an(Array)
-      expect(json.length).to be 10
       expect(response).to match_json_schema("artists")
+      expect(json.length).to be 10
     end
   end
 
@@ -30,46 +27,52 @@ describe "Artists API" do
     end
 
     it "returns an artist" do
+      expect(response).to be_success
       expect(response).to match_json_schema("artist")
     end
 
     it "returns artist by id" do
-      expect(response).to be_success
       expect(json["id"]).to be artist.id
     end
 
     it "returns artist with name" do
-      expect(response).to be_success
       expect(json["name"]).to eq "Foo"
     end
 
     it "returns artist with featured" do
-      expect(response).to be_success
       expect(json["featured"]).to be false
     end
 
     it "returns artist with rank" do
-      expect(response).to be_success
       expect(json["rank"]).to be 1
     end
 
-    it "returns 404 for artist that doesn't exist" do
-      get '/artists/missing'
-      expect(response).to be_missing
-    end
+    it_behaves_like "not found", "/artists/missing"
   end
 
   describe "POST /artists" do
 
-    before do
-      post '/artists', name: "Foo", featured: true
+    context "with valid params" do
+
+      before do
+        post '/artists', name: "Foo", featured: true
+      end
+
+      it "creates an artist" do
+        expect(response).to be_created
+        expect(response).to match_json_schema("artist")
+        expect(json["name"]).to eq "Foo"
+        expect(json["featured"]).to be true
+      end
     end
 
-    it "creates an artist" do
-      expect(response).to be_created
-      expect(response).to match_json_schema("artist")
-      expect(json["name"]).to eq "Foo"
-      expect(json["featured"]).to be true
+    context "with invalid params" do
+
+      before do
+        post '/artists', name: nil
+      end
+
+      it_behaves_like "unprocessable"
     end
   end
 
@@ -77,14 +80,26 @@ describe "Artists API" do
 
     let(:artist) { create :artist, name: "Foo" }
 
-    before do
-      put "/artists/#{artist.id}", name: "Bar"
+    context "with valid params" do
+
+      before do
+        put "/artists/#{artist.id}", name: "Bar"
+      end
+
+      it "updates an artist" do
+        expect(response).to be_success
+        expect(response).to match_json_schema("artist")
+        expect(json["name"]).to eq "Bar"
+      end
     end
 
-    it "updates an artist" do
-      expect(response).to be_success
-      expect(response).to match_json_schema("artist")
-      expect(json["name"]).to eq "Bar"
+    context "with invalid params" do
+
+      before do
+        put "/artists/#{artist.id}", name: nil
+      end
+
+      it_behaves_like "unprocessable"
     end
   end
 
@@ -112,9 +127,8 @@ describe "Artists API" do
 
     it "returns artists" do
       expect(response).to be_success
-      expect(json).to be_an(Array)
-      expect(json.length).to be 10
       expect(response).to match_json_schema("artists")
+      expect(json.length).to be 10
     end
 
     it "returns artists that are featured" do
@@ -134,9 +148,8 @@ describe "Artists API" do
 
     it "returns artists by rank" do
       expect(response).to be_success
-      expect(json).to be_an(Array)
-      expect(json.length).to be 10
       expect(response).to match_json_schema("artists")
+      expect(json.length).to be 10
     end
   end
 
@@ -149,9 +162,8 @@ describe "Artists API" do
 
     it "returns top 5 artists" do
       expect(response).to be_success
-      expect(json).to be_an(Array)
-      expect(json.length).to be 5
       expect(response).to match_json_schema("artists")
+      expect(json.length).to be 5
     end
   end
 end

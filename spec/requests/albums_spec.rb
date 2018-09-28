@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe "Albums API" do
 
-  let(:json) { JSON.parse(response.body) }
-
   describe "GET /albums" do
 
     before do
@@ -13,9 +11,8 @@ describe "Albums API" do
 
     it "returns albums" do
       expect(response).to be_success
-      expect(json).to be_an(Array)
+      expect(response).to match_response_schema("albums")
       expect(json.length).to be 10
-      expect(response).to match_json_schema("albums")
     end
   end
 
@@ -33,9 +30,8 @@ describe "Albums API" do
 
     it "returns albums" do
       expect(response).to be_success
-      expect(json).to be_an(Array)
+      expect(response).to match_response_schema("albums")
       expect(json.length).to be 10
-      expect(response).to match_json_schema("albums")
     end
   end
 
@@ -51,54 +47,59 @@ describe "Albums API" do
     end
 
     it "returns an album" do
-      expect(response).to match_json_schema("album")
+      expect(response).to be_success
+      expect(response).to match_response_schema("album")
     end
 
     it "returns album by id" do
-      expect(response).to be_success
       expect(json["id"]).to be album.id
     end
 
     it "returns album with name" do
-      expect(response).to be_success
       expect(json["name"]).to eq "Foo"
     end
 
     it "returns album with released_at" do
-      expect(response).to be_success
       expect(json["released_at"]).to eq "2008-01-27"
     end
 
     it "returns album with rank" do
-      expect(response).to be_success
       expect(json["rank"]).to be 1
     end
 
-    it "returns 404 for album that doesn't exist" do
-      get '/albums/missing'
-      expect(response).to be_missing
-    end
-
     it "returns songs for album" do
-      expect(response).to be_success
-      expect(json["songs"]).to be_an(Array)
       expect(json["songs"].length).to be 10
     end
+
+    it_behaves_like "not found", "/albums/missing"
   end
 
   describe "POST /artists/:artist_id/albums" do
 
     let(:artist) { create :artist }
 
-    before do
-      post "/artists/#{artist.id}/albums", name: "Foo", released_at: "2008-01-27"
+    context "with valid params" do
+
+      before do
+        post "/artists/#{artist.id}/albums", name: "Foo",
+          released_at: "2008-01-27"
+      end
+
+      it "creates an album" do
+        expect(response).to be_created
+        expect(response).to match_response_schema("album")
+        expect(json["name"]).to eq "Foo"
+        expect(json["released_at"]).to eq "2008-01-27"
+      end
     end
 
-    it "creates an album" do
-      expect(response).to be_created
-      expect(response).to match_json_schema("album")
-      expect(json["name"]).to eq "Foo"
-      expect(json["released_at"]).to eq "2008-01-27"
+    context "with invalid params" do
+
+      before do
+        post "/artists/#{artist.id}/albums", name: nil
+      end
+
+      it_behaves_like "unprocessable"
     end
   end
 
@@ -106,14 +107,26 @@ describe "Albums API" do
 
     let(:album) { create :album, name: "Foo" }
 
-    before do
-      put "/albums/#{album.id}", name: "Bar"
+    context "with valid params" do
+
+      before do
+        put "/albums/#{album.id}", name: "Bar"
+      end
+
+      it "updates an album" do
+        expect(response).to be_success
+        expect(response).to match_response_schema("album")
+        expect(json["name"]).to eq "Bar"
+      end
     end
 
-    it "updates an album" do
-      expect(response).to be_success
-      expect(response).to match_json_schema("album")
-      expect(json["name"]).to eq "Bar"
+    context "with invalid params" do
+
+      before do
+        put "/albums/#{album.id}", name: nil
+      end
+
+      it_behaves_like "unprocessable"
     end
   end
 
@@ -142,8 +155,8 @@ describe "Albums API" do
 
     it "returns albums released recently" do
       expect(response).to be_success
+      expect(response).to match_response_schema("albums")
       expect(json.length).to be 5
-      expect(response).to match_json_schema("albums")
     end
   end
 
@@ -156,9 +169,8 @@ describe "Albums API" do
 
     it "returns artists by rank" do
       expect(response).to be_success
-      expect(json).to be_an(Array)
+      expect(response).to match_response_schema("albums")
       expect(json.length).to be 10
-      expect(response).to match_json_schema("albums")
     end
   end
 
@@ -171,9 +183,8 @@ describe "Albums API" do
 
     it "returns top 5 albums" do
       expect(response).to be_success
-      expect(json).to be_an(Array)
+      expect(response).to match_response_schema("albums")
       expect(json.length).to be 5
-      expect(response).to match_json_schema("albums")
     end
   end
 end
