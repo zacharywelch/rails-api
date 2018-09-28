@@ -15,7 +15,7 @@ describe "Artists API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
-      expect(response).to match_response_schema("artists")
+      expect(response).to match_json_schema("artists")
     end
   end
 
@@ -30,7 +30,7 @@ describe "Artists API" do
     end
 
     it "returns an artist" do
-      expect(response).to match_response_schema("artist")
+      expect(response).to match_json_schema("artist")
     end
 
     it "returns artist by id" do
@@ -67,7 +67,7 @@ describe "Artists API" do
 
     it "creates an artist" do
       expect(response).to be_created
-      expect(response).to match_response_schema("artist")
+      expect(response).to match_json_schema("artist")
       expect(json["name"]).to eq "Foo"
       expect(json["featured"]).to be true
     end
@@ -83,7 +83,7 @@ describe "Artists API" do
 
     it "updates an artist" do
       expect(response).to be_success
-      expect(response).to match_response_schema("artist")
+      expect(response).to match_json_schema("artist")
       expect(json["name"]).to eq "Bar"
     end
   end
@@ -114,7 +114,7 @@ describe "Artists API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
-      expect(response).to match_response_schema("artists")
+      expect(response).to match_json_schema("artists")
     end
 
     it "returns artists that are featured" do
@@ -136,7 +136,7 @@ describe "Artists API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
-      expect(response).to match_response_schema("artists")
+      expect(response).to match_json_schema("artists")
     end
   end
 
@@ -151,7 +151,7 @@ describe "Artists API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 5
-      expect(response).to match_response_schema("artists")
+      expect(response).to match_json_schema("artists")
     end
   end
 end

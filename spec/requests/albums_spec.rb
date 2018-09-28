@@ -15,7 +15,7 @@ describe "Albums API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
-      expect(response).to match_response_schema("albums")
+      expect(response).to match_json_schema("albums")
     end
   end
 
@@ -35,7 +35,7 @@ describe "Albums API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
-      expect(response).to match_response_schema("albums")
+      expect(response).to match_json_schema("albums")
     end
   end
 
@@ -51,7 +51,7 @@ describe "Albums API" do
     end
 
     it "returns an album" do
-      expect(response).to match_response_schema("album")
+      expect(response).to match_json_schema("album")
     end
 
     it "returns album by id" do
@@ -96,7 +96,7 @@ describe "Albums API" do
 
     it "creates an album" do
       expect(response).to be_created
-      expect(response).to match_response_schema("album")
+      expect(response).to match_json_schema("album")
       expect(json["name"]).to eq "Foo"
       expect(json["released_at"]).to eq "2008-01-27"
     end
@@ -112,7 +112,7 @@ describe "Albums API" do
 
     it "updates an album" do
       expect(response).to be_success
-      expect(response).to match_response_schema("album")
+      expect(response).to match_json_schema("album")
       expect(json["name"]).to eq "Bar"
     end
   end
@@ -143,7 +143,7 @@ describe "Albums API" do
     it "returns albums released recently" do
       expect(response).to be_success
       expect(json.length).to be 5
-      expect(response).to match_response_schema("albums")
+      expect(response).to match_json_schema("albums")
     end
   end
 
@@ -158,7 +158,7 @@ describe "Albums API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
-      expect(response).to match_response_schema("albums")
+      expect(response).to match_json_schema("albums")
     end
   end
 
@@ -173,7 +173,7 @@ describe "Albums API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 5
-      expect(response).to match_response_schema("albums")
+      expect(response).to match_json_schema("albums")
     end
   end
 end

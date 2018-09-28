@@ -15,7 +15,7 @@ describe "Songs API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
-      expect(response).to match_response_schema("songs")
+      expect(response).to match_json_schema("songs")
     end
   end
 
@@ -35,7 +35,7 @@ describe "Songs API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 10
-      expect(response).to match_response_schema("songs")
+      expect(response).to match_json_schema("songs")
     end
   end
 
@@ -50,7 +50,7 @@ describe "Songs API" do
     end
 
     it "returns a song" do
-      expect(response).to match_response_schema("song")
+      expect(response).to match_json_schema("song")
     end
 
     it "returns song by id" do
@@ -84,7 +84,7 @@ describe "Songs API" do
 
     it "creates an song" do
       expect(response).to be_created
-      expect(response).to match_response_schema("song")
+      expect(response).to match_json_schema("song")
       expect(json["name"]).to eq "Foo"
       expect(json["album_id"]).to be album.id
     end
@@ -100,7 +100,7 @@ describe "Songs API" do
 
     it "updates a song" do
       expect(response).to be_success
-      expect(response).to match_response_schema("song")
+      expect(response).to match_json_schema("song")
       expect(json["name"]).to eq "Bar"
     end
   end
@@ -131,7 +131,7 @@ describe "Songs API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 25
-      expect(response).to match_response_schema("songs")
+      expect(response).to match_json_schema("songs")
     end
   end
 
@@ -146,7 +146,7 @@ describe "Songs API" do
       expect(response).to be_success
       expect(json).to be_an(Array)
       expect(json.length).to be 5
-      expect(response).to match_response_schema("songs")
+      expect(response).to match_json_schema("songs")
     end
   end
 end
