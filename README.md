@@ -9,6 +9,7 @@ Sample music API using Rails
 - [responders](https://github.com/plataformatec/responders)
 - [rspec](https://github.com/rspec/rspec-rails)
 - [factory girl](https://github.com/thoughtbot/factory_girl_rails)
+- [json_matchers](https://github.com/thoughtbot/json_matchers)
 
 ### Domain
 
@@ -18,7 +19,7 @@ The following domain is used to illustrate key principles and maintain focus on 
 - Albums
 - Songs
 
-An artist has many albums. An album has many songs. 
+An artist has many albums. An album has many songs.
 
 Quick links include:
 - featured (artists)
